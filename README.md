@@ -1,6 +1,6 @@
 # Database Server
 
-## The Brief
+## The brief
 
 You receive a message from a prospective employer:
 
@@ -19,10 +19,10 @@ $ git clone https://github.com/AbigailMcP/database-server.git
 $ npm install
 $ node app.js
 ```
-The server will run on http://localhost:4000/.
+The server will run on http://localhost:4000/. Save your key/value pair by navigating to http://localhost:4000/set?somekey=somevalue and updating the query string. Retrieve the stored value by navigating to http://localhost:4000/get?key=somekey, replacing 'somekey' with your specific key. The value will be displayed on the page.
 
 Run tests via the command line using `$ npm test`.
 
 ## Notes
 
-I have built the server using Express.js and used Mocha Chai with Request for testing.
+I used Express.js to build the server and Mocha Chai with Request for testing.
