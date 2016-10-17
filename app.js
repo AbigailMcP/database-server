@@ -2,10 +2,6 @@ var express = require('express');
 var app = express();
 var database = {};
 
-app.get('/', function(req, res) {
-  res.send('Hello world!');
-});
-
 app.get('/set', function(req, res) {
   for (var key in req.query) {
     database[key] = req.query[key];
