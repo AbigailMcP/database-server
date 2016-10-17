@@ -7,7 +7,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/set', function(req, res) {
-  res.send(req.query);
+  for (var key in req.query) {
+    database[key] = req.query[key];
+    console.log(key + ' has been set to' + database[key]);
+  }
+  res.send(database);
 });
 
 app.listen(4000, function() {

@@ -20,10 +20,18 @@ describe('Database server', function() {
 
     it('returns status 200', function(done) {
       request(url, function(error, response, body) {
-      expect(response.statusCode).to.equal(200);
-      done();
+        expect(response.statusCode).to.equal(200);
+        done();
       });
     });
+
+    it('saves a key value pair to a hash', function(done) {
+      request(url, function(error, response, body) {
+        expect(body).to.equal('{"somekey":"somevalue"}');
+        done();
+      });
+    });
+
   });
 
 });
