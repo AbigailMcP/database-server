@@ -9,9 +9,13 @@ app.get('/', function(req, res) {
 app.get('/set', function(req, res) {
   for (var key in req.query) {
     database[key] = req.query[key];
-    console.log(key + ' has been set to' + database[key]);
+    console.log(key + ' has been set to ' + database[key]);
   }
   res.send(database);
+});
+
+app.get('/get', function(req, res) {
+  res.send(database[req.query.key]);
 });
 
 app.listen(4000, function() {

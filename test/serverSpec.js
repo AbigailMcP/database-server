@@ -31,7 +31,29 @@ describe('Database server', function() {
         done();
       });
     });
+  });
 
+  describe('getting route', function() {
+    var setUrl = "http://localhost:4000/set?somekey=somevalue";
+    var getUrl = "http://localhost:4000/get?key=somekey";
+
+    before(function() {
+      request(setUrl);
+    });
+
+    it('returns status 200', function(done) {
+      request(getUrl, function(error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        done();
+      });
+    });
+
+    it('returns the value of the given key', function(done) {
+      request(getUrl, function(error, response, body) {
+        expect(body).to.equal('somevalue');
+        done();
+      });
+    });
   });
 
 });
