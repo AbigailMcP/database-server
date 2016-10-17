@@ -11,7 +11,11 @@ app.get('/set', function(req, res) {
 });
 
 app.get('/get', function(req, res) {
-  res.send(database[req.query.key]);
+  if (database[req.query.key] !== undefined) {
+    res.send(database[req.query.key]);
+  } else {
+    res.send('Sorry, that key does not exist');
+  }
 });
 
 app.listen(4000, function() {

@@ -25,6 +25,7 @@ describe('Database server', function() {
   describe('getting route', function() {
     var setUrl = "http://localhost:4000/set?somekey=somevalue";
     var getUrl = "http://localhost:4000/get?key=somekey";
+    var getWrongUrl = "http://localhost:4000/get?key=wrongkey";
 
     before(function() {
       request(setUrl);
@@ -40,6 +41,13 @@ describe('Database server', function() {
     it('returns the value of the given key', function(done) {
       request(getUrl, function(error, response, body) {
         expect(body).to.equal('somevalue');
+        done();
+      });
+    });
+
+    it('prints a message if the key does not exist', function(done) {
+      request(getWrongUrl, function(error, response, body) {
+        expect(body).to.equal('Sorry, that key does not exist');
         done();
       });
     });
